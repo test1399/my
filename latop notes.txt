@@ -1,0 +1,69 @@
+<a data--color="red">link</a> ->(in js) element.dataset.color return "red"
+creating an element in js:
+	const li = document.createElement("li")
+Js useful things:
+	element.innerHTML="";
+	li = document.createElement("li");
+	element.append(li)
+	form_element.onsubmit = function(){ return false//disable form submission}
+	document.addEventListener("DOMContentLoaded", ()=> { //function code}
+	this.parentElement.remove()
+	
+setInterval(function_name, delay_in_milisecond) => setInterval(my_func, 1000)
+localStorage.getItem("item_name")
+localStorage.setItem("item_name", "item_value")
+JSON.parse(request.responseText) //convert plain text into JSON object.
+Ajax:
+	request = new XMLHttpRequest();
+	request.open("POST", "/convert")
+	request.onload = ()=> { function run after response recieved from server}
+	
+	Post data:
+		data = new FormData()
+		data.append("param_name","param_value")
+		request.send(data)
+SocketIO library for socket programming:
+	var socket = io.connect(location.protocol+"//"+document.domain+":"+location.port); //socket defination
+	socket.on('connect', ()=> {}  //some code to run after mading connection
+	socket.emit("submit vote", {"selection":selection}); //send data to server, we can recieve data on server side by "submit vote" as a sign
+	socket.on("announce vote", data => { } //We are waiting for request named "announce vote" recieving the request data is processable by data variable.
+
+
+01:03:00 //Writing dice app with oure js
+
+Python virtual environment:
+	is a tool to isolate different project to prevent dependency conflict.
+	
+
+
+Frontend:
+document.title = "Page title" //enable us to change page title.
+history.pushState(null,"page title","page_url");  //Enable history on SPA apps.
+
+history.pushState(
+	{"title":"in this param we can store data on browser for each state"},
+	"page title","page_url");  //Enable history on SPA apps.
+
+window.onpopstate = e => { //With this code and "history.pushState" we can enable back and forward in SPA
+	const data = e.state;
+	document.title = data.title; //Data is the first argument that we pass to "history.pushState()" }
+
+
+
+
+
+
+
+Flask:
+socketoIO on flask:
+	
+	
+	@socketio.on("submit vote") #Defining route for socketIO connection
+	def vote(data):
+		selection = data["selection"] 
+		votes[selection] +=1
+		emit("announce vote", {"yes":votes["yes"], "no":votes["no"], "maybe":votes["maybe"]}, broadcast=True) #send data to clients in broadcast mode
+
+
+
+{{ urlfor("static", filename="index.js") }}  //Generate link for static files like css&js
